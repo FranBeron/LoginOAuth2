@@ -1,9 +1,20 @@
-.m-25{
+.m-25 {
     margin: 25px 0px;
 }
-.m-15{
+
+.m-15 {
     margin: 15px 0px;
 }
-.mt-25{
+
+.mt-25 {
     margin: 25% 0;
+}
+
+.mt-59 {
+    margin: 0px 0px 59px;
+}
+
+.rounded {
+    border-radius: 15px !important;
+    padding:0px 50px 50px 50px!important;
 }

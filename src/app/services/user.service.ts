@@ -6,6 +6,7 @@ import {
   signOut,
   signInWithPopup,
   GoogleAuthProvider,
+  FacebookAuthProvider,
 } from '@angular/fire/auth';
 
 @Injectable({
@@ -27,5 +28,8 @@ export class UserService {
 
   loginWithGoogle() {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
+  }
+  loginWithFacebook() {
+    return signInWithPopup(this.auth, new FacebookAuthProvider());
   }
 }

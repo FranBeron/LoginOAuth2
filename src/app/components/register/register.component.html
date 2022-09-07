@@ -1,21 +1,23 @@
 <div class="container">
-  <div class="row">
+  <div class="row backgroun_row">
     <div class="col-6 offset-3">
       <div class="container shadow-lg p-3 mb-5 bg-white rounded mt-25">
-        <div class="d-flex justify-content-center">
-          <h2>Register de usuario</h2>
+        <div class="d-flex justify-content-center mt-59 ">
+          <img
+            src="../../../assets/images/Cartoon-Avatar-Image-Login.png"
+            width="150px"
+          />
         </div>
         <form [formGroup]="formReg" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="text" class="form-control" formControlName="email" />
+            <input type="text" class="form-control" formControlName="email" placeholder="Email" />
           </div>
           <div class="mb-3">
-            <label class="form-label">Password</label>
             <input
               type="password"
               class="form-control"
               formControlName="password"
+              placeholder="Password"
             />
           </div>
           <div class="d-inline text-center">

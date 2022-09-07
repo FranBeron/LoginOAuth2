@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 html, body {
     height: 100%;
-    background-color: #273746!important;
+    background-color: #dde5f4;
+}
+
+.backgroun_row{
+    background: #f1f7fe!important;
 }

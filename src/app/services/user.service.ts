@@ -14,6 +14,7 @@ import {
 })
 export class UserService {
   constructor(private auth: Auth) {}
+
   register({ email, password }: any) {
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
@@ -29,7 +30,10 @@ export class UserService {
   loginWithGoogle() {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
   }
+
   loginWithFacebook() {
     return signInWithPopup(this.auth, new FacebookAuthProvider());
   }
+  
+  
 }

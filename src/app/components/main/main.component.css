@@ -2,3 +2,14 @@
     padding: 0;
     background-color: #405872!important;
 }
+.user-picture{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.user-info{
+    text-align: -webkit-center;
+    margin: 10rem;
+}

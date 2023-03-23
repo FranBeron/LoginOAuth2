@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { getAuth } from 'firebase/auth';
+import { getAuth, User } from 'firebase/auth';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-  userPic: any;
+  user: any;
 
-  constructor(private userService: UserService, private router: Router) {
-    const auth = getAuth();
-    const user = auth.currentUser;
-
-    if (user !== null) {
-      this.userPic = user.photoURL;
-    }
+  constructor(private userService: UserService, private router: Router) {}
+  ngOnInit(): void {
+    this.userService
+      .getCurrentUser()
+      .then((user) => {
+        this.user = user;
+      })
+      .catch((error) => console.log(error));
   }
-  ngOnInit(): void {}
-
-  onClick() {
+  logout() {
     this.userService
       .logout()
       .then(() => {
@@ -28,5 +27,4 @@ export class MainComponent implements OnInit {
       })
       .catch((error) => console.log(error));
   }
-  
 }

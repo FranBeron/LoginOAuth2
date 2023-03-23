@@ -11,6 +11,8 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     LoginComponent,
     RegisterComponent,
     UserInfoComponent,
-    
+    ForgotPasswordComponent,
+
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth())
   ],

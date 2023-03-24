@@ -1,14 +1,16 @@
 <div class="card">
   <div class="img-avatar">
-    <img class="user-picture" src="{{ userPic }}" />
+    <img class="user-picture"  [ngClass]="{'localPhoto' : !photoExist}" [src]="userPic || '../../../assets/images/Cartoon-Avatar-Image-Login.png'" />
   </div>
   <div class="card-text">
-    <div class="portada"></div>
+    <div class="portada" [ngClass]="{'isContain': showToken}"></div>
     <div class="title-total">
-      <div class="title">Welcome!</div>
+      <h1 class="title">Welcome!</h1>
       <h2>{{ userName }}</h2>
 
       <div class="desc">{{ userEmail }}</div>
+      <button class="btn btn-info mb-3" (click)="onShowToken()">Token</button>
+      <div *ngIf="showToken" class="token">{{ token }}</div>
     </div>
   </div>
 </div>

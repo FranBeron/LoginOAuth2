@@ -1,7 +1,7 @@
 
-<nav class="navbar navbar-light bg-light">
-  <div class="container justify-content-between">
-    <img class="user-picture" [src]="user.photoURL" alt="Foto de perfil">
+<nav class="navbar navbar-light bg-light ">
+  <div class="container justify-content-between mt-3 mb-3">
+    <img class="user-picture" [src]="user?.photoURL || '../../../assets/images/Cartoon-Avatar-Image-Login.png'" alt="Foto de perfil">
     <button  class="btn btn-outline-info" (click)="logout()">Cerrar sesión</button>
   </div>
 </nav>

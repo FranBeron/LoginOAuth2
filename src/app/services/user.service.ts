@@ -11,13 +11,13 @@ import {
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { User } from '../models/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  router: any;
-  constructor(private auth: Auth, private Aft: AngularFireAuth) {}
+  constructor(private auth: Auth, private Aft: AngularFireAuth,  private router: Router) {}
 
   register({ email, password }: any) {
     return createUserWithEmailAndPassword(this.auth, email, password);
@@ -49,16 +49,15 @@ export class UserService {
     return this.Aft.sendPasswordResetEmail(email);
   }
 
-  logout() {
-    return this.auth
-      .signOut()
-      .then(() => {
-        this.router.navigate(['/login']);
-      })
-      .catch((error) => {
-        console.log(error);
-        throw new Error('Error al cerrar sesión');
-      });
+  async logout() {
+    try {
+      await this.auth
+        .signOut();
+      this.router.navigate(['/login']);
+    } catch (error) {
+      console.log(error);
+      throw new Error('Error al cerrar sesión');
+    }
   }
 
   loginWithGoogle() {

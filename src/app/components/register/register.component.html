@@ -1,45 +1,59 @@
 <div class="container">
   <div class="row backgroun_row">
     <div class="col-6 offset-3">
-      <div class="container shadow-lg p-3 mb-5 bg-white rounded mt-25">
-        <div class="d-flex justify-content-center mt-59 ">
-          <img
-            src="../../../assets/images/Cartoon-Avatar-Image-Login.png"
-            width="150px"
-          />
+      <div class="container p-3 mb-5 bg-white rounded mt-25">
+        <div class="mt-59 ">
+          <h1 class="pt-5">Register</h1>
         </div>
         <form [formGroup]="formReg" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <input type="text" class="form-control" formControlName="email" placeholder="Email" />
+            <input type="email" id="email" formControlName="email" placeholder="Email" name="email" [(ngModel)]="email"
+              required class="form-control mb-3" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
           </div>
+
+          <div class="invalid-feedback mb-2"
+            *ngIf="formReg.get('email')?.invalid && (formReg.get('email')?.dirty || formReg.get('email')?.touched)">
+            <div *ngIf="formReg.get('email').errors.required">Email is required.</div>
+            <div *ngIf="formReg.get('email').errors.email">Enter an email address valid.</div>
+          </div>
+
           <div class="mb-3">
-            <input
-              type="password"
-              class="form-control"
-              formControlName="password"
-              placeholder="Password"
-            />
+            <input type="password" class="form-control" formControlName="password" placeholder="Password" />
+
+            <div class="invalid-feedback mb-2"
+              *ngIf="formReg.get('password')?.invalid && (formReg.get('password')?.dirty || formReg.get('password')?.touched)">
+              <div *ngIf="formReg.get('password').errors.required">The password is required.</div>
+              <div *ngIf="formReg.get('password').errors.minlength">The password must have at least 8 characters.
+              </div>
+              <div *ngIf="formReg.get('password').errors.pattern">The password must contain at least one number and
+                one special character.</div>
+            </div>
           </div>
           <div class="d-inline text-center">
             <div>
-              <input
-                type="submit"
-                class="btn btn-outline-dark m-25 w-100"
-                value="Registrar"
-              />
+              <input *ngIf="!loading" type="submit" class="btn btn-outline-dark m-25 w-100" value="Register"
+                [disabled]="formReg.invalid" />
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-2 mt-2"></span>
             </div>
+      
             <div>
-              <button
-                type="button"
-                class="btn btn-outline-primary w-100"
-                routerLink="/login"
-              >
+              <button type="button" class="btn btn-outline-primary w-100" routerLink="/login">
                 Sign in
               </button>
             </div>
+
+            <div class="invalid-feedback mt-2 mb-2">
+              <h6 *ngIf="userExist">User Exist!</h6>
+            </div>
+
           </div>
+
         </form>
+
       </div>
+
     </div>
+
   </div>
+
 </div>

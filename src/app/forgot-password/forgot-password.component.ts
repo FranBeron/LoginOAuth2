@@ -12,11 +12,12 @@ export class ForgotPasswordComponent implements OnInit {
   message: string = '';
   resetPasswordForm: any;
   loading: boolean = false;
+
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder
   ) {}
-  
+
   ngOnInit(): void {
     this.resetPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -26,15 +27,16 @@ export class ForgotPasswordComponent implements OnInit {
   resetPassword() {
     if (this.email) {
       this.loading = true;
-      this.userService.resetPassword(this.email)
+      this.userService
+        .resetPassword(this.email)
         .then(() => {
-          this.message = 'Se ha enviado un correo electrónico de restablecimiento de contraseña a su dirección de correo electrónico.';
+          this.message =
+            'Se ha enviado un correo electrónico de restablecimiento de contraseña a su dirección de correo electrónico.';
         })
         .catch((error) => {
           this.message = error.message;
         })
         .finally(() => {
-          // Muestra el circulo de carga durante medio segundo después de enviar el formulario
           setTimeout(() => {
             this.loading = false;
           }, 500);

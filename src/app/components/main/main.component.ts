@@ -11,6 +11,7 @@ export class MainComponent implements OnInit {
   user: any;
 
   constructor(private userService: UserService, private router: Router) {}
+
   ngOnInit(): void {
     this.userService
       .getCurrentUser()
@@ -19,6 +20,7 @@ export class MainComponent implements OnInit {
       })
       .catch((error) => console.log(error));
   }
+  
   logout() {
     this.userService
       .logout()
